@@ -28,7 +28,7 @@ async function build() {
   config.outputDir = path.join(config.rootDir, 'dist');
   config.templatesDir = path.join(config.rootDir, 'src', 'templates');
   config.partialsDir = path.join(config.templatesDir, 'partials');
-  config.assetsDir = path.join(config.outputDir, 'assets');
+  config.assetsDir = path.join(config.rootDir, 'src', 'assets');
 
   try {
     // Step 1: Fetch documentation from GitHub
