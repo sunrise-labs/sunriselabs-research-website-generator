@@ -1,0 +1,28 @@
+{
+  "name": "sunriselabs-research-website-generator",
+  "version": "1.0.0",
+  "description": "Static site generator for Sunrise Labs Research documentation",
+  "main": "src/generator/index.js",
+  "scripts": {
+    "build": "node src/generator/index.js",
+    "test": "node --test test/**/*.test.js",
+    "dev": "node src/generator/index.js --watch"
+  },
+  "keywords": [
+    "static-site-generator",
+    "documentation",
+    "sunrise-labs"
+  ],
+  "author": "Sunrise Labs",
+  "license": "MIT",
+  "dependencies": {
+    "@octokit/rest": "^20.0.2",
+    "gray-matter": "^4.0.3",
+    "marked": "^11.1.0",
+    "handlebars": "^4.7.8",
+    "js-yaml": "^4.1.0"
+  },
+  "devDependencies": {
+    "prettier": "^3.1.1"
+  }
+}

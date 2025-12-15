@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="theme-color" content="#0a0a0a" media="(prefers-color-scheme: dark)">
+    <meta name="theme-color" content="#fafafa" media="(prefers-color-scheme: light)">
+    <title>Sunrise Labs - South Pacific R&D</title>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@300;400;500;600&family=Spectral:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/css/main.css">
+</head>
+<body>
+    <div class="dot-grid"></div>
+
+    {{> nav}}
+
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-grid">
+                <div class="hero-text">
+                    <h1>Technology for<br>Pacific Impact</h1>
+                    <p class="hero-tagline">
+                        Open research and development advancing technology solutions for
+                        social and environmental impact across the South Pacific region.
+                    </p>
+                    <div class="hero-meta">
+                        <div class="meta-item">
+                            <div class="meta-label">Based In</div>
+                            <div class="meta-value">Cook Islands</div>
+                        </div>
+                        <div class="meta-item">
+                            <div class="meta-label">Focus</div>
+                            <div class="meta-value">Marine Science & Infrastructure</div>
+                        </div>
+                        <div class="meta-item">
+                            <div class="meta-label">Established</div>
+                            <div class="meta-value">2024</div>
+                        </div>
+                        <div class="meta-item">
+                            <div class="meta-label">Documentation</div>
+                            <div class="meta-value">Open Access</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat-grid">
+                        <div class="stat-card">
+                            <div class="stat-value">{{statistics.activeProjects}}</div>
+                            <div class="stat-label">Active Projects</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-value">{{statistics.totalMilestones}}</div>
+                            <div class="stat-label">Research Milestones</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-value">{{statistics.totalInsights}}</div>
+                            <div class="stat-label">Published Insights</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects">
+        <div class="section-container">
+            <div class="section-header">
+                <div class="section-label">Current Work</div>
+                <h2 class="section-title">Active Projects</h2>
+                <p class="section-description">
+                    Our current research initiatives span marine conservation, community infrastructure,
+                    and sustainable technology deployment across Pacific island nations.
+                </p>
+            </div>
+            <div class="projects-grid">
+                {{#each latest.latestProjects}}
+                    {{> project-card}}
+                {{/each}}
+            </div>
+        </div>
+    </section>
+
+    <section id="insights">
+        <div class="section-container">
+            <div class="section-header">
+                <div class="section-label">Knowledge</div>
+                <h2 class="section-title">Recent Insights</h2>
+                <p class="section-description">
+                    Generalizable learnings and discoveries from our research work,
+                    documented for the broader scientific community.
+                </p>
+            </div>
+            <div class="insights-grid">
+                {{#each latest.latestInsights}}
+                    {{> insight-card}}
+                {{/each}}
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="section-container">
+            <div class="section-header">
+                <div class="section-label">Impact</div>
+                <h2 class="section-title">Research Outcomes</h2>
+            </div>
+            <div class="impact-grid">
+                <div class="impact-card">
+                    <div class="impact-number">{{statistics.totalProjects}}</div>
+                    <div class="impact-label">Total Projects</div>
+                </div>
+                <div class="impact-card">
+                    <div class="impact-number">{{statistics.totalMilestones}}</div>
+                    <div class="impact-label">Milestones Achieved</div>
+                </div>
+                <div class="impact-card">
+                    <div class="impact-number">{{statistics.totalInsights}}</div>
+                    <div class="impact-label">Insights Published</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="section-container">
+            <div class="cta-section">
+                <h2>Open Research Documentation</h2>
+                <p>
+                    All our research, methodologies, and findings are documented in the open.
+                    Explore our complete research archive on GitHub.
+                </p>
+                <div class="cta-buttons">
+                    <a href="#projects" class="btn btn-primary">View Projects</a>
+                    <a href="https://github.com/sunrise-labs" class="btn">Browse GitHub</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <h3>Sunrise Labs</h3>
+                    <p>
+                        Research and development laboratory advancing technology solutions
+                        for social impact across the South Pacific region.
+                    </p>
+                </div>
+                <div class="footer-links">
+                    <h4>Research</h4>
+                    <ul>
+                        <li><a href="#projects">Projects</a></li>
+                        <li><a href="#insights">Insights</a></li>
+                        <li><a href="#">Milestones</a></li>
+                        <li><a href="#">Synthesis</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="#">Documentation</a></li>
+                        <li><a href="https://github.com/sunrise-labs">GitHub</a></li>
+                        <li><a href="#">Data</a></li>
+                        <li><a href="#">Publications</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Connect</h4>
+                    <ul>
+                        <li><a href="#">About</a></li>
+                        <li><a href="#">Team</a></li>
+                        <li><a href="#">Contact</a></li>
+                        <li><a href="#">Partners</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2024 Sunrise Labs. Open Research Initiative.</p>
+                <p>Cook Islands</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="/assets/js/theme-toggle.js"></script>
+</body>
+</html>

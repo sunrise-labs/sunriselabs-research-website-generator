@@ -1,0 +1,67 @@
+name: Build and Deploy Site
+
+on:
+  # Trigger on repository dispatch events from other repos
+  repository_dispatch:
+    types: [documentation-updated]
+
+  # Allow manual triggering
+  workflow_dispatch:
+
+  # Trigger on push to main branch
+  push:
+    branches:
+      - main
+
+  # Schedule daily builds to catch any updates
+  schedule:
+    - cron: '0 0 * * *'  # Daily at midnight UTC
+
+jobs:
+  build-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Fetch documentation from GitHub
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_ORG: sunrise-labs
+        run: |
+          echo "Fetching documentation from sunrise-labs organization..."
+          node scripts/clone-documentation.js
+
+      - name: Build site
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          BASE_URL: https://sunriselabs.io
+        run: |
+          echo "Building static site..."
+          npm run build
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist
+          publish_branch: gh-pages
+          cname: sunriselabs.io
+          user_name: 'github-actions[bot]'
+          user_email: 'github-actions[bot]@users.noreply.github.com'
+          commit_message: 'Deploy site update'
+
+      - name: Summary
+        run: |
+          echo "✅ Build and deployment complete!"
+          echo "Site deployed to: https://sunriselabs.io"

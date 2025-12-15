@@ -1,0 +1,128 @@
+<aside class="sidebar">
+    <div class="sidebar-section">
+        <div class="sidebar-label">Status</div>
+        <div class="status-badge status-{{status}}">{{capitalize status}}</div>
+    </div>
+
+    <div class="sidebar-divider"></div>
+
+    <div class="sidebar-section">
+        <div class="metadata-grid">
+            <div class="meta-row">
+                <div class="sidebar-label">Type</div>
+                <div class="sidebar-value">{{capitalize type}}</div>
+            </div>
+
+            <div class="meta-row">
+                <div class="sidebar-label">ID</div>
+                <div class="sidebar-value">{{id}}</div>
+            </div>
+
+            <div class="meta-row">
+                <div class="sidebar-label">Date</div>
+                <div class="sidebar-value">{{date}}</div>
+            </div>
+
+            <div class="meta-row">
+                <div class="sidebar-label">Lab</div>
+                <div class="sidebar-value">{{lab}}</div>
+            </div>
+
+            {{#if authors}}
+            <div class="meta-row">
+                <div class="sidebar-label">Authors</div>
+                {{#each authors}}
+                    <div class="sidebar-value">{{this}}</div>
+                {{/each}}
+            </div>
+            {{/if}}
+        </div>
+    </div>
+
+    <div class="sidebar-divider"></div>
+
+    {{#if tags}}
+    <div class="sidebar-section">
+        <div class="sidebar-label">Tags</div>
+        <div class="tag-list">
+            {{#each tags}}
+                <span class="tag">{{this}}</span>
+            {{/each}}
+        </div>
+    </div>
+    <div class="sidebar-divider"></div>
+    {{/if}}
+
+    {{#if (or linkedFrom.milestones linkedFrom.experiments linkedFrom.insights linkedFrom.decisions linkedFrom.synthesis relatedPages)}}
+    <div class="sidebar-section">
+        {{#if linkedFrom.milestones}}
+        <div class="link-section">
+            <h4>Milestones</h4>
+            <ul class="link-list">
+                {{#each linkedFrom.milestones}}
+                    <li><a href="{{url}}">{{title}}</a></li>
+                {{/each}}
+            </ul>
+        </div>
+        {{/if}}
+
+        {{#if linkedFrom.experiments}}
+        <div class="link-section">
+            <h4>Experiments</h4>
+            <ul class="link-list">
+                {{#each linkedFrom.experiments}}
+                    <li><a href="{{url}}">{{title}}</a></li>
+                {{/each}}
+            </ul>
+        </div>
+        {{/if}}
+
+        {{#if linkedFrom.insights}}
+        <div class="link-section">
+            <h4>Insights</h4>
+            <ul class="link-list">
+                {{#each linkedFrom.insights}}
+                    <li><a href="{{url}}">{{title}}</a></li>
+                {{/each}}
+            </ul>
+        </div>
+        {{/if}}
+
+        {{#if linkedFrom.decisions}}
+        <div class="link-section">
+            <h4>Decisions</h4>
+            <ul class="link-list">
+                {{#each linkedFrom.decisions}}
+                    <li><a href="{{url}}">{{title}}</a></li>
+                {{/each}}
+            </ul>
+        </div>
+        {{/if}}
+
+        {{#if linkedFrom.synthesis}}
+        <div class="link-section">
+            <h4>Synthesis</h4>
+            <ul class="link-list">
+                {{#each linkedFrom.synthesis}}
+                    <li><a href="{{url}}">{{title}}</a></li>
+                {{/each}}
+            </ul>
+        </div>
+        {{/if}}
+    </div>
+    {{/if}}
+
+    {{#if relatedPages}}
+    <div class="sidebar-divider"></div>
+    <div class="sidebar-section">
+        <div class="link-section">
+            <h4>Related Pages</h4>
+            <ul class="link-list">
+                {{#each relatedPages}}
+                    <li><a href="{{url}}">{{title}}</a></li>
+                {{/each}}
+            </ul>
+        </div>
+    </div>
+    {{/if}}
+</aside>

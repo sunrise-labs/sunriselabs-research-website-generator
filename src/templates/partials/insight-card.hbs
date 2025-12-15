@@ -1,0 +1,13 @@
+<a href="{{url}}" class="insight-card">
+    <div class="insight-date">{{date}}</div>
+    <h4>{{title}}</h4>
+    <p class="insight-excerpt">
+        {{#if excerpt}}
+            {{excerpt}}
+        {{else}}
+            {{#if rawContent}}
+                {{substring rawContent 0 150}}...
+            {{/if}}
+        {{/if}}
+    </p>
+</a>

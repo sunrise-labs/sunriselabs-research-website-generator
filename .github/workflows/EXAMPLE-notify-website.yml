@@ -1,0 +1,29 @@
+# Example workflow for research repositories
+# Copy this file to .github/workflows/notify-website.yml in each research repo
+# to trigger website rebuilds when documentation changes
+
+name: Notify Website of Documentation Changes
+
+on:
+  push:
+    paths:
+      - 'documentation/**'
+    branches:
+      - main
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger website rebuild
+        uses: peter-evans/repository-dispatch@v2
+        with:
+          token: ${{ secrets.SITE_GENERATOR_TOKEN }}
+          repository: sunrise-labs/sunriselabs-research-website-generator
+          event-type: documentation-updated
+          client-payload: |
+            {
+              "repository": "${{ github.repository }}",
+              "commit": "${{ github.sha }}",
+              "pusher": "${{ github.actor }}"
+            }

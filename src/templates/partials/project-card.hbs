@@ -1,0 +1,18 @@
+<a href="{{url}}" class="project-card">
+    <div class="project-status">{{status}}</div>
+    <h3>{{title}}</h3>
+    <p class="project-description">
+        {{#if excerpt}}
+            {{excerpt}}
+        {{else}}
+            {{#if rawContent}}
+                {{substring rawContent 0 200}}...
+            {{/if}}
+        {{/if}}
+    </p>
+    <div class="project-tags">
+        {{#each tags}}
+            <span class="tag">{{this}}</span>
+        {{/each}}
+    </div>
+</a>
