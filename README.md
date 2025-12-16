@@ -2,6 +2,16 @@
 
 Static site generator that builds the Sunrise Labs Research website from documentation across all organization repositories.
 
+## Part of the Sunrise Labs Open-Research Framework
+
+This repository is one of three interconnected components:
+
+- **[sunriselabs-research-spec](https://github.com/sunrise-labs/sunriselabs-research-spec)** - Defines the documentation specification with 7 page types (project, milestone, experiment, daily-note, insight, decision, synthesis) using Markdown + YAML frontmatter
+- **[sunriselabs-research-skill](https://github.com/sunrise-labs/sunriselabs-research-skill)** - Claude Code skill that guides researchers through creating documentation following the spec, with integrated Git repository management
+- **[sunriselabs-research-website-generator](https://github.com/sunrise-labs/sunriselabs-research-website-generator)** (this repo) - Static site generator that automatically fetches documentation from GitHub repositories and renders them into a live website
+
+**How they work together:** The spec defines the structure → the skill helps create compliant documentation → the generator renders it as a website.
+
 ## Overview
 
 This generator:
